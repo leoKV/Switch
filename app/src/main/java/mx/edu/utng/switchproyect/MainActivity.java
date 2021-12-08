@@ -2,6 +2,7 @@ package mx.edu.utng.switchproyect;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,15 +51,22 @@ public class MainActivity extends AppCompatActivity {
         Network network = new BasicNetwork(new HurlStack());
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
-
-        System.out.println("Clicked");
-
         String url = "http://192.168.1.81/switch/status.php";
 
         StringRequest request = new StringRequest(Request.Method.GET,url, new Response.Listener<String>(){
             @Override
             public void onResponse(String response) {
-                System.out.println(response);
+                if (response.equals("On")){
+                    Button button = (Button)findViewById(R.id.button);
+                    button.setText("Off");
+                    System.out.println(response);
+                }else {
+                    Button button = (Button)findViewById(R.id.button);
+                    button.setText("On");
+                    System.out.println(response);
+
+                }
+
             }},
             new Response.ErrorListener() {
             @Override
