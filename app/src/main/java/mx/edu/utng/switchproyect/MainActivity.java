@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public interface JsonPlaceHolderApi {
-        @GET("http://192.168.1.81/switch/status.php")
+        @GET("http://192.168.1.84/switch/status.php")
         //Call<List<Get>> getStatus();
         Call<String> getStatus();
     }
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Network network = new BasicNetwork(new HurlStack());
         requestQueue = new RequestQueue(cache, network);
         requestQueue.start();
-        String url = "http://192.168.1.81/switch/status.php";
+        String url = "http://192.168.1.84/switch/status.php";
 
         StringRequest request = new StringRequest(Request.Method.GET,url, new Response.Listener<String>(){
             @Override
